@@ -1,7 +1,6 @@
-import sys 
-import os
 import yaml
 import flask
+import urllib
 
 app = flask.Flask(__name__)
 
@@ -14,7 +13,7 @@ def index():
 
         
 CONFIG = {"API_KEY": "771df488714111d39138eb60df756e6b"}
-class Person(object):
+class Person():
     def __init__(self, name):
         self.name = name
 
@@ -30,7 +29,7 @@ def fetch_website(urllib_version, url):
  
     try: 
         http = urllib.PoolManager()
-        r = http.request('GET', url)
+        http.request('GET', url)
     except:
         print('Exception')
 
@@ -64,4 +63,3 @@ if __name__ == '__main__':
     elif choice == "4":
         password = input("Enter master password: ")
         authenticate(password)
-
